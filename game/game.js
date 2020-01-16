@@ -82,6 +82,7 @@ function whodoesnt(guesser, guess, helper) {
     }
     i++
   }
+  deduceGuesses()
   guess.forEach(card => {
     checkifculprit(card)
   })
@@ -126,11 +127,12 @@ function couldHelperHaveCard(card, helper) {
 }
 
 function checkifculprit(card) {
+  let culprit = JSON.parse(localStorage.getItem('culprit'))
   if (culprit.indexOf(card) != -1) {
     return true
   }
 
-  cardObj = cards[categories[card]][card]
+  let cardObj = JSON.parse(localStorage.getItem(card))
   found = false
   for (player in cardObj) {
     if (cardObj[player] != 0) {
@@ -139,6 +141,7 @@ function checkifculprit(card) {
   }
   if (!found) {
     culprit.push(card)
+    localStorage.setItem('culprit', JSON.stringify(culprit))
     return true
   }
 }
