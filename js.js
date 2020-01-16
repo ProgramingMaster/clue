@@ -147,7 +147,7 @@ function crossout(guess) {
       return
     }
 
-    if (blank.length > 0) 
+    if (blank.length > 0)
       blank = "-1"
     else
       blank = card.name

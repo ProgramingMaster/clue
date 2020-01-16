@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="../styles.css">
+  <title>Clue: Game</title>
+</head>
+<body>
+
+  <h2>Someone else's guess</h2>
+  <form onsubmit="guess(guesser.value, [guessWho.value, guessWhat.value, guessWhere.value], helper.value); return false">
+    <div class="form-group">
+      <select id="guesser" class="form-control" name="guesser">
+        <option disabled selected value>Guesser</option>
+      </select>
+
+      <select class="form-control" name="guessWho">
+        <option disabled selected value>Guess Who</option>
+        <option>green</option>
+        <option>mustard</option>
+        <option>peacock</option>
+        <option>plum</option>
+        <option>skarlet</option>
+        <option>white</option>
+      </select>
+
+      <select class="form-control" name="guessWhat">
+        <option disabled selected value>Guess What</option>
+        <option>wrench</option>
+        <option>candlestick</option>
+        <option>dagger</option>
+        <option>pistol</option>
+        <option>leadpipe</option>
+        <option>rope</option>
+      </select>
+
+      <select class="form-control" name="guessWhere">
+        <option disabled selected value>Guess Where</option>
+        <option>bathroom</option>
+        <option>study</option>
+        <option>diningroom</option>
+        <option>gameroom</option>
+        <option>garage</option>
+        <option>bedroom</option>
+        <option>livingroom</option>
+        <option>kitchen</option>
+        <option>courtyard</option>
+      </select>
+
+      <select id="helper" class="form-control" name="helper">
+        <option disabled selected value>Helper</option>
+        <option value="nohelp">No Help</option>
+      </select>
+
+      <button type="submit" class="btn btn-primary">Add Guess</button>
+    </div>
+  </form>
+  <br>
+
+  <h2>Your Guess</h2>
+
+
+  <h2>Manual</h2>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="../helpers.js"></script>
+  <script src="game.js"></script>
+
+</body>
+</html>

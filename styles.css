@@ -1,0 +1,15 @@
+/* centers stuff */
+body {
+    text-align: center;
+    margin: auto;
+}
+
+.form-control {
+    /* Center Form */
+    margin: auto;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+
+    margin-bottom: 10px;
+}
