@@ -10,6 +10,14 @@ function populate(selector) {
 populate('#guesser')
 populate('#helper')
 populate('#player')
+updateTable()
+
+function updateTable() {
+  allCards.forEach(card => {
+    $('#table').append(`<p>${card}: ${localStorage.getItem(card)}</p>`)
+  })
+  $('#table').append(`<p>Culprit: ${localStorage.getItem('culprit')}`)
+}
 
 function manual(card, player, value) {
   if (value == 'culprit') {
@@ -73,28 +81,28 @@ function guess(guesser, guess, helper, shown = false) {
 }
 
 function deduceGuesses() {
-    let found = false;
-    let guesses = JSON.parse(localStorage.getItem('guesses'))
-    for (let i = 0; i < guesses.length; i++){
-      let cross = crossout(guesses[i])
-    
-      if (cross[0]) {
-        guesses.splice(i, 1)
-        found = true
-        break
-      }
-      if (cross[1].length > 0) {
-        guesses[i]["guess"].forEach(card => {
-          if (cross[1].indexOf(card.name) != -1) {
-            card.crossedout = true
-          }
-        })
-      }
+  let found = false;
+  let guesses = JSON.parse(localStorage.getItem('guesses'))
+  for (let i = 0; i < guesses.length; i++){
+    let cross = crossout(guesses[i])
+  
+    if (cross[0]) {
+      guesses.splice(i, 1)
+      found = true
+      break
     }
-    localStorage.setItem('guesses', JSON.stringify(guesses))
-    if (found)
-      deduceGuesses()
+    if (cross[1].length > 0) {
+      guesses[i]["guess"].forEach(card => {
+        if (cross[1].indexOf(card.name) != -1) {
+          card.crossedout = true
+        }
+      })
+    }
   }
+  localStorage.setItem('guesses', JSON.stringify(guesses))
+  if (found)
+    deduceGuesses()
+}
 
 function whodoesnt(guesser, guess, helper) {
   let i = guesser+1
@@ -175,6 +183,7 @@ function checkifculprit(card) {
   if (!found) {
     culprit.push(card)
     localStorage.setItem('culprit', JSON.stringify(culprit))
+    updateTable()
     return true
   }
 }
