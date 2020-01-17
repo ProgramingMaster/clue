@@ -1,4 +1,6 @@
 function updateTable() {
+  $('#table').html('')
+  console.log("TABLE UPDATED")
   allCards.forEach(card => {
     $('#table').append(`<p>${card}: ${localStorage.getItem(card)}</p>`)
   })
