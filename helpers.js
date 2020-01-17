@@ -1,3 +1,10 @@
+function updateTable() {
+  allCards.forEach(card => {
+    $('#table').append(`<p>${card}: ${localStorage.getItem(card)}</p>`)
+  })
+  $('#table').append(`<p>Culprit: ${localStorage.getItem('culprit')}`)
+}
+
 function change(card, player, value) {
     console.log(card, player, value)
     localCard = JSON.parse(localStorage.getItem(card))

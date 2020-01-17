@@ -12,13 +12,6 @@ populate('#helper')
 populate('#player')
 updateTable()
 
-function updateTable() {
-  allCards.forEach(card => {
-    $('#table').append(`<p>${card}: ${localStorage.getItem(card)}</p>`)
-  })
-  $('#table').append(`<p>Culprit: ${localStorage.getItem('culprit')}`)
-}
-
 function manual(card, player, value) {
   if (value == 'culprit') {
     let culprit = JSON.parse(localStorage.getItem('culprit'))
