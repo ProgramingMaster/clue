@@ -1,5 +1,5 @@
 function change(card, player, value) {
-    console.log(card)
+    console.log(card, player, value)
     localCard = JSON.parse(localStorage.getItem(card))
     localCard[player] = value
     localStorage.setItem(card, JSON.stringify(localCard))

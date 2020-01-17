@@ -1,6 +1,6 @@
 players = JSON.parse(localStorage.getItem('players'))
-numPlayers = localStorage.getItem('numPlayers')
-you = localStorage.getItem('you')
+numPlayers = Number(localStorage.getItem('numPlayers'))
+you = Number(localStorage.getItem('you'))
 
 function populate(selector) {
     players.forEach(player => {
@@ -9,11 +9,41 @@ function populate(selector) {
 }
 populate('#guesser')
 populate('#helper')
+populate('#player')
 
-function guess(guesser, guess, helper) {
+function manual(card, player, value) {
+  if (value == 'culprit') {
+    let culprit = JSON.parse(localStorage.getItem('culprit'))
+    culprit.push(card)
+    localStorage.setItem('culprit', JSON.stringify(culprit))
+    return
+  }
+  change(card, Number(player), Number(value))
+}
+
+function guess(guesser, guess, helper, shown = false) {
   guesser = Number(guesser)
+  if (guesser == you) {
+    if (helper == "nohelp") {
+      console.log(":)")
+      whodoesnt(you, guess, you)
+      return
+    }
+    helper = Number(helper)
+    whodoesnt(you, guess, helper)
+    change(shown, helper, 1)
+    return
+  }
+  if (helper == "nohelp") {
+    whodoesnt(guesser, guess, guesser)
+    return
+  }
   helper = Number(helper)
   whodoesnt(guesser, guess, helper)
+  if (shown) {
+    change(shown, helper, 1)
+    return
+  }
   let guessObj = {
     guesser: guesser,
     guess: guess.map(card => {
@@ -69,11 +99,14 @@ function deduceGuesses() {
 function whodoesnt(guesser, guess, helper) {
   let i = guesser+1
   while (i != helper) {
+    console.log(i)
     if (i >= numPlayers){
+      console.log(":O")
       i = 0
       continue
     }
     if (i == you) {
+      console.log(":(")
       i++
       continue
     }
