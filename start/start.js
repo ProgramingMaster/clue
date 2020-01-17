@@ -6,8 +6,6 @@ if(localStorage.getItem('start')) {
 $('#new').click(() => {
     localStorage.clear()
     localStorage.setItem('start', true)
-    window.location.href = "/setup/setup.html";
+    window.location.href = "http://cluededucer.herokuapp.com/setup/setup.html";
 })
 
-$('#continue').click(() => {
-})
