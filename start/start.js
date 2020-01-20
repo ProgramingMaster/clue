@@ -1,5 +1,4 @@
 if(localStorage.getItem('start')) {
-    console.log(":)")
     $('#continue').css('display', 'inline-block')
 }
 
