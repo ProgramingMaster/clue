@@ -17,6 +17,7 @@ function manual(card, player, value) {
     let culprit = JSON.parse(localStorage.getItem('culprit'))
     culprit.push(card)
     localStorage.setItem('culprit', JSON.stringify(culprit))
+    updateTable()
     return
   }
   change(card, Number(player), Number(value))
