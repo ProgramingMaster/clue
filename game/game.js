@@ -101,14 +101,11 @@ function deduceGuesses() {
 function whodoesnt(guesser, guess, helper) {
   let i = guesser+1
   while (i != helper) {
-    console.log(i)
     if (i >= numPlayers){
-      console.log(":O")
       i = 0
       continue
     }
     if (i == you) {
-      console.log(":(")
       i++
       continue
     }
