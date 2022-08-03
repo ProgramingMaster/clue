@@ -15,4 +15,4 @@ The site uses Jquery and Bootstrap, but is otherwise a vanilla site.
 
 I don't believe the app is up any longer, but you can still open it using any localhost starter (such as http-server).
 
-Once you have the app running on a localhost, you will need to navigate to the start folder and click on start.html
+Once you have the app running on a localhost, you will need to navigate to the start folder and open start.html
